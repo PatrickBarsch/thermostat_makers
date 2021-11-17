@@ -18,11 +18,19 @@ describe('Thermostat', function(){
     thermostat.down();
     expect(thermostat.temperature).toEqual(19)
   });
-  it('has a minimum temperature of 10', () => {
+  it('has a minimum temperature', () => {
     while(thermostat.temperature > (thermostat.MINIMUM_TEMPERATURE) ) {
       thermostat.down();
     };
     thermostat.down();
-    expect(thermostat.temperature).toEqual(10)
+    expect(thermostat.temperature).toEqual(thermostat.MINIMUM_TEMPERATURE)
   });
+  it('has a maximum temperature of 25, when in PowerSaving mode', () => {
+    while(thermostat.temperature < (thermostat._maximumTemperature) ) {
+      thermostat.up();
+    };
+    thermostat.up();
+    expect(thermostat.temperature).toEqual(25)
+  });
+
 });
