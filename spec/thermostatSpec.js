@@ -48,5 +48,18 @@ describe('Thermostat', function(){
 
     expect(thermostat.temperature).toEqual(20);
   });
+  it('indicates the energy usage', () => {
+    thermostat.powerSavingMode();
+    expect(thermostat.energyUsage()).toEqual("medium-usage")
 
+    while(thermostat.temperature > (thermostat.MINIMUM_TEMPERATURE) ) {
+      thermostat.down();
+    };
+    expect(thermostat.energyUsage()).toEqual("low-usage")
+
+    while(thermostat.temperature < (thermostat.getMaximumTemperature()) ) {
+      thermostat.up();
+    };
+    expect(thermostat.energyUsage()).toEqual("high-usage")
+  })
 });

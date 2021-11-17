@@ -21,5 +21,13 @@ class Thermostat {
   reset() {
     this.temperature = 20
   }
-
+  energyUsage() {
+    if(this.temperature < 18) {
+      return "low-usage"
+    }
+    if(this.temperature <= 25) {
+      return "medium-usage"
+    }
+    return "high-usage" 
+  }
 }
