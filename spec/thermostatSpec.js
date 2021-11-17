@@ -19,9 +19,10 @@ describe('Thermostat', function(){
     expect(thermostat.temperature).toEqual(19)
   });
   it('has a minimum temperature of 10', () => {
-    while(thermostat.temperature >= (thermostat.MINIMUM_TEMPERATURE - 1) ) {
-      thermostat.down()
-    }
+    while(thermostat.temperature > (thermostat.MINIMUM_TEMPERATURE) ) {
+      thermostat.down();
+    };
+    thermostat.down();
     expect(thermostat.temperature).toEqual(10)
   });
 });
